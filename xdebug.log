@@ -1,0 +1,10 @@
+[115132] Log opened at 2022-04-27 03:27:51.835501
+[115132] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[115132] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[115132] Log closed at 2022-04-27 03:27:51.845599
+
+[111224] Log opened at 2022-04-27 03:37:58.575151
+[111224] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[111224] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[111224] Log closed at 2022-04-27 03:37:58.582658
+
