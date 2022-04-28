@@ -1,64 +1,77 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+## API COM LARAVEL 8
+<p>
+Esta Api possui os seguintes metodos GET, POST, PUT, DELETE, todos implementados no padrão REST</p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+## TECNOLOGIAS UTILIZADAS<br>
+### No Ambiente de Desenvolvimento<br>
+<p><ul>
+    <li>
+    Foi utilizado o Laradocker para subir o ambiente de desenvolvimento Mysql, NGINX, PHPFPM</li>
+    <li>IDE  VS Code</li>
+    <li>Docker ver 20 </li>
+    <li>Para Testes foi utilizado PhpUnit </li>
+    <li>PHP ver 7.4</li>
+    </ul>
 </p>
 
-## About Laravel
+## INSTALAÇÃO<br>
+### Instalando Lara docker<br>
+<p>
+<ul>
+    
+<li>
+Crie uma pasta e acesse a mesma
+</li>
+<li>
+git clone https://github.com/Laradock/laradock.git laradock
+</li>
+<li>
+cd laradock 
+</li>
+<li>Crie um arquivo env, neste arquivo você deve colocar variaveis de ambiento dos container<br> cp env-example .env</li>
+<li>docker-compose up -d nginx mysql</li>
+<li>
+<p>
+E para alterar os dados de senha do MySql:<br>
+MYSQL_DATABASE=Nome do database padrão que será criado na primeira vez que rodar<br>
+MYSQL_USER=Nome do usuário padrão<br>
+MYSQL_PASSWORD=Senha do usuário<br>
+MYSQL_PORT=Porta que vai rodar<br>
+MYSQL_ROOT_PASSWORD=Senha do usuário root</p>
+</li>
+</ul>
+</p>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### Subindo projeto no ambiente de desenvolvimento<br>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+<p>
+<ol>
+<li>
+Após fianizar instalação do laradocker teremos a seguinte estrutura de pasta<br>
+\meu_projeto\laradocker<br>
+dentro da pasta "meu_projeto\" clonamos o nosso projeto
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+</li>
+<li>Execute o git clone https://github.com/AdalgisioAlves/api_laravel.git</li>
+<li>
+Teremos agora: <br>
+meu_projeto\<br>
+&nbsp;&nbsp;&nbsp; ->\laradocker<br>
+&nbsp;&nbsp;&nbsp; ->\api_laravel                         
+</li>
+<li>Agora precisamos configurar o Ngix para apontar para pasta "www\api_laravel\public"</li>
+<li>Edite o arquivo meu_projeto\laradock\nginx\sites\default.conf</li>
+<li>
+Altere a linha  "root /var/www/" para "root /var/www/api_laravel/public;"<br>
+O laradocker já faz o mapeamento da pasta que está abaixo da "laradocker"
+</li>
+<li>
+ Rode o comando "composer install", dentro da pasta  "api_laravel", este comando vai instalar todas as dependencias do projeto.
+  rode o comando docker-compose restart para reiniciar
+</li>
+<li>
+Então é só reniciar que a api poderá ser acessada no http://localhost/api
+</li>
+</ol>
+</p>
 
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).

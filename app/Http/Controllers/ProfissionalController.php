@@ -23,6 +23,14 @@ class ProfissionalController extends Controller
         return response()->json($json);
     }
 
+    public function BuscarProfissional(Request $request, Response $response)
+    {
+
+        $salva = new Profissional;
+        $json = $salva->BuscarProfissional($request->all());
+        return response()->json($json);
+    }
+
     public function PutProfissional(Request $request,$id)
     {
         $salva = new Profissional;

@@ -73,6 +73,60 @@ class Profissional extends Model
 
     }
 
+    public function BuscarProfissional($dados)
+    {
+
+        try {
+            $valida = Validator::make($dados,[
+                'nome' => 'required|max:255',
+            ]);
+            if($valida->fails() == true){
+                $errors = $valida->errors();
+                return array(
+                    'status' => 0,
+                    'msg'=> 'Dados invalidos',
+                    'erro' => $errors
+                );
+            }
+
+            $json = [];
+            $Profissional = DB::table('profissionais')
+                ->select('profissionais.id','profissionais.nome', 'profissionais.crm','profissionais.telefone')
+                ->where('profissionais.nome','like',"%{$dados['nome']}%")
+                ->get()
+                ->toArray();
+
+            foreach ($Profissional as $key => $value) {
+
+                $especialidades = DB::table('profissional_especialidades')
+                    ->select('profissional_especialidades.id','especialidades.especialidade')
+                    ->join('especialidades','especialidades.id','=','profissional_especialidades.especialidade_id')
+                    ->where('profissional_especialidades.profissional_id','=', 6)
+                    ->get()->toArray();
+
+                $json[$key] = array(
+                    'id' => $value->id,
+                    'nome' => $value->nome,
+                    'crm' => $value->crm,
+                    'telefone' => $value->telefone,
+                    'especialidades' => $especialidades
+                );
+
+            }
+        } catch (\Throwable $th) {
+            return array(
+                'status' => 0,
+                'msg'=> 'Erro encontrad ao buscar Profissional',
+                'erro' => $th->getMessage()
+            );
+
+        }
+        return array(
+                'status' => 1,
+                'msg'=> 'OK',
+                'data' => $json
+        );
+    }
     public function GetProfissional()
     {
 

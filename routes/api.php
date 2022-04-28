@@ -20,6 +20,7 @@ Route::get('/',[Controller::class,'home']);
 Route::group(['prefix' => 'profissional'], function () {
     Route::get('/get', [ProfissionalController::class,'GetProfissional'])->name('profissional.get'); //Listar
     Route::post('/post', [ProfissionalController::class,'PostProfissional'])->name('profissional.post'); //Criar
+    Route::post('/buscar', [ProfissionalController::class,'BuscarProfissional'])->name('profissional.buscar'); //Criar
     Route::put('/put/{id}', [ProfissionalController::class,'PutProfissional'])->name('profissional.put'); //Atualizar
     Route::delete('/delete/{id}', [ProfissionalController::class,'DeleteProfissional'])->name('profissional.delete'); //Deletar
 });
