@@ -5,21 +5,27 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 use App\Models\Profissional;
+use App\Service\ProfissionalService;
 
 class ProfissionalController extends Controller
 {
-    public function GetProfissional(Request $request, Response $response)
+    protected $serviceProfissional;
+
+    public function __construct(ProfissionalService $profissionalService)
     {
-        $profissional  = new Profissional;
-        $json = $profissional->GetProfissional();
-        return response()->json($json);
+        $this->serviceProfissional = $profissionalService;
+
+    }
+    public function GetProfissional()
+    {
+        $profissional  = $this->serviceProfissional->getAll();
+        return response()->json($profissional);
     }
 
     public function PostProfissional(Request $request, Response $response)
     {
 
-        $salva = new Profissional;
-        $json = $salva->SalvarProfissional($request->all());
+        $json = $this->serviceProfissional->create($request->all());
         return response()->json($json);
     }
 
